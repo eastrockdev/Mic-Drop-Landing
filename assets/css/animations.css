@@ -1,0 +1,50 @@
+/* ===== Sequential fade-in utility ===== */
+
+/* Motion-safe: completely disable if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .seq > * { opacity: 1 !important; transform: none !important; animation: none !important; }
+}
+
+/* Base keyframe */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Parent marks a sequence; its direct children animate in order */
+.seq > * {
+  opacity: 0;
+  animation: fadeUp .6s ease forwards;
+}
+
+/* Stagger: adjust the step for faster/slower cadence */
+:root { --seq-step: 90ms; }  /* change to 60ms for snappier, 120ms for more chill */
+
+/* First 10 items (extend if needed) */
+.seq > *:nth-child(1)  { animation-delay: calc(var(--seq-step) * 0); }
+.seq > *:nth-child(2)  { animation-delay: calc(var(--seq-step) * 1); }
+.seq > *:nth-child(3)  { animation-delay: calc(var(--seq-step) * 2); }
+.seq > *:nth-child(4)  { animation-delay: calc(var(--seq-step) * 3); }
+.seq > *:nth-child(5)  { animation-delay: calc(var(--seq-step) * 4); }
+.seq > *:nth-child(6)  { animation-delay: calc(var(--seq-step) * 5); }
+.seq > *:nth-child(7)  { animation-delay: calc(var(--seq-step) * 6); }
+.seq > *:nth-child(8)  { animation-delay: calc(var(--seq-step) * 7); }
+.seq > *:nth-child(9)  { animation-delay: calc(var(--seq-step) * 8); }
+.seq > *:nth-child(10) { animation-delay: calc(var(--seq-step) * 9); }
+
+/* ===== Convenience variants for your layouts ===== */
+
+/* Home page: sequence the .step blocks (direct children of the glass) */
+.steps-seq > .step { opacity: 0; animation: fadeUp .6s ease forwards; }
+.steps-seq > .step:nth-child(1) { animation-delay: calc(var(--seq-step) * 0); }
+.steps-seq > .step:nth-child(2) { animation-delay: calc(var(--seq-step) * 1); }
+.steps-seq > .step:nth-child(3) { animation-delay: calc(var(--seq-step) * 2); }
+
+/* Locations page: sequence the grid columns, not just the inner card */
+.locations-seq > [class*="col-"] { opacity: 0; animation: fadeUp .6s ease forwards; }
+.locations-seq > [class*="col-"]:nth-child(1) { animation-delay: calc(var(--seq-step) * 0); }
+.locations-seq > [class*="col-"]:nth-child(2) { animation-delay: calc(var(--seq-step) * 1); }
+.locations-seq > [class*="col-"]:nth-child(3) { animation-delay: calc(var(--seq-step) * 2); }
+
+/* Optional: slower hero fade */
+.hero-fade { opacity: 0; animation: fadeUp .7s ease .15s forwards; }

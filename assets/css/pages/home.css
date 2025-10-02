@@ -1,0 +1,3 @@
+/* Page-specific overrides for the Home (Mic Drop steps) */
+/* Center the number+text pair inside each .step */
+.step{ justify-content:center; }

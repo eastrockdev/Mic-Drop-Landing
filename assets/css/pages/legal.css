@@ -1,0 +1,17 @@
+/* assets/css/pages/legal.css */
+
+h5 {
+  margin-top: 1.5rem;
+  margin-bottom: .5rem;
+  font-weight: 700;
+}
+
+ul {
+  padding-left: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.glass p,
+.glass li {
+  line-height: 1.5;
+}

@@ -1,0 +1,96 @@
+:root{
+  --accent:#ff2a6d;
+  --text:#fff;
+  --bg1:#0b0b0d;
+  --bg2:#141420;
+  --bg3:#1a0f18;
+}
+
+/* Global */
+/* 1) Solid fallback so iOS overscroll never shows white */
+html {
+  background: var(--bg2);
+  color-scheme: light dark;
+}
+
+/* 2) Fixed, full-viewport gradient lives on the root, not the body */
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(160deg, var(--bg1), var(--bg2), var(--bg3));
+  background-size: 200% 200%;
+  animation: gradientShift 12s ease infinite;
+  will-change: transform;
+}
+
+/* 3) Body is transparent and sized with dynamic viewport height */
+html, body { height: 100%; }
+body{
+  min-height: 100dvh;         /* <- key: handles iOS toolbar resize */
+  margin: 0;
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  background: transparent;    /* gradient is on html::before */
+}
+
+/* 4) Move the glow to a fixed root layer so it also covers chrome */
+html::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,42,109,.4), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(169,29,255,.4), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(29,140,255,.4), transparent 50%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  html::before{ animation: none; }
+}
+
+@keyframes gradientShift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+
+/* Default link reset; components can override */
+a{color:inherit; text-decoration:none}
+a:hover,a:focus{color:inherit; text-decoration:none}
+
+/* Layout helpers */
+.container-narrow{max-width:560px}
+
+/* Hero */
+.hero{text-align:center; padding:1rem 1rem 0}
+.hero h1{font-weight:800; letter-spacing:.5px}
+.hero p.lead{opacity:.9}
+
+/* Glass panel */
+.glass{
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  background:rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:1rem;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+
+
+
+/* Footer note */
+.footer-note{
+  font-size:.85rem;
+  opacity:.7;
+  text-align:center;
+  padding-bottom:2rem;
+}
+

@@ -1,2 +1,18 @@
-/* Page-specific overrides for Choose Location (if needed later) */
-/* Currently using shared components; left here for future tweaks */
+.btn-cta-outline {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+.text-fade {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+.footer-note {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}

@@ -1,20 +1,39 @@
 /* Primary CTA button (red) */
 .btn-cta {
-    background: var(--accent);
-    font-weight: 700;
-    padding: 1rem 1.5rem;
-    border-radius: 999px;
-    width: 100%;
-
+  background: var(--accent);
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  width: 100%;
+  color: #fff;
+  border: 2px solid var(--accent);
+  text-align: center;
+  display: inline-block;
+  transition: all 0.3s ease;
 }
 
 .btn-cta:hover {
-    background: var(--accent);
-    font-weight: 700;
-    padding: 1rem 1.5rem;
-    border-radius: 999px;
-    width: 100%;
+  background: #fff;
+  color: var(--accent);
+}
 
+/* Outlined variant */
+.btn-cta-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-cta-outline:hover {
+  background: var(--accent);
+  color: #fff;
 }
 
 /* Steps (home page uses these) */
